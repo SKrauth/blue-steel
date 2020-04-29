@@ -1,15 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { canvasStyles } from '.'
 
 export interface PageProps { height: number; width: number; }
 
-export class Page extends Component<PageProps, {}> {
-  render() {
-
+export function Page({height, width}: PageProps) {
     return (
       <div>
-      <canvas width={this.props.height} height={this.props.width} style={canvasStyles}></canvas>
+      <canvas width={height} height={width} style={canvasStyles}></canvas>
       </div>
     )
-  }
 }
