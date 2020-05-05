@@ -1,12 +1,13 @@
 import React from 'react';
-import { canvasStyles } from '.'
+import { StyledPage } from '.'
 
-export interface PageProps { height: number; width: number; }
+export interface PageProps { pageWidth: number; }
 
-export function Page({height, width}: PageProps) {
+export function Page({pageWidth}: PageProps) {
+  console.log(<StyledPage height={Math.floor(pageWidth * (11/8.5))}  width={pageWidth} />)
     return (
-      <div>
-      <canvas width={width} height={height} style={canvasStyles}></canvas>
-      </div>
+      <StyledPage height={Math.floor(pageWidth * (11/8.5))}  width={pageWidth}>
+        Hello World
+      </StyledPage>
     )
 }

@@ -1,5 +1,12 @@
-import CSS from 'csstype';
+import styled from "styled-components";
 
-export const canvasStyles: CSS.Properties = {
-  border: '1px solid #000000',
+type PageStyles = {
+  height: number,
+  width: number,
 };
+
+export const StyledPage = styled.div<PageStyles>`
+  border: 1px solid #000000;
+  height: ${props => props.height.toString() + "px"};
+  width: ${props => props.width.toString() + "px"};
+`;
