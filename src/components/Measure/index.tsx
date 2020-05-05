@@ -1,2 +1,2 @@
-export * from "./Measure"
-export * from "./Styles"
+export * from './Measure';
+export * from './Styles';

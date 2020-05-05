@@ -1,14 +1,6 @@
 import React from 'react';
-import { StyledLine } from '.'
+import { StyledLine } from '.';
 
-export interface LineProps {lineHeight: number; }
-
-export const Line : React.FunctionComponent<LineProps> =
-  ({lineHeight, children}) =>
-{
-    return (
-      <StyledLine height={lineHeight}>
-        {children}
-      </StyledLine>
-    )
-}
+export const Line: React.FunctionComponent = ({ children }) => {
+    return <StyledLine>{children}</StyledLine>;
+};
