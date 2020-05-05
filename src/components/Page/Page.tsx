@@ -1,13 +1,17 @@
 import React from 'react';
 import { StyledPage } from '.'
+import { Line } from '../Line'
+import { Measure } from '../Measure'
 
 export interface PageProps { pageWidth: number; }
 
 export function Page({pageWidth}: PageProps) {
-  console.log(<StyledPage height={Math.floor(pageWidth * (11/8.5))}  width={pageWidth} />)
+
     return (
       <StyledPage height={Math.floor(pageWidth * (11/8.5))}  width={pageWidth}>
-        Hello World
+        <Line lineHeight={100}>
+          <Measure measureHeight={100} measureWidth={200} />
+          </Line>
       </StyledPage>
     )
 }
