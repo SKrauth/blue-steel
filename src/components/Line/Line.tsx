@@ -1,6 +1,15 @@
 import React from 'react';
 import { StyledLine } from '.';
+import { Measure as MeasureObj } from '../../models'
+import { Measure as MeasureComp } from '../Measure'
 
-export const Line: React.FunctionComponent = ({ children }) => {
-    return <StyledLine>{children}</StyledLine>;
+export interface LineProps {
+    width: number;
+    measures: MeasureObj[];
+}
+
+export function Line({ width, measures }: LineProps) {
+    let lineContents = measures.map(() => {return <MeasureComp measureWidth={width / measures.length} measureHeight={100} />})
+
+    return <StyledLine>{lineContents}</StyledLine>;
 };
