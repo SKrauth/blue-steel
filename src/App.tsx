@@ -15,7 +15,6 @@ function App({}: AppProps) {
 
   return (
     <div style={pageContainer} ref={ref}>
-      <h2>Blue Steel</h2>
       <Page pageWidth={pageWidth} />
     </div>
   );

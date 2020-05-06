@@ -9,7 +9,7 @@ export interface LineProps {
 }
 
 export function Line({ width, measures }: LineProps) {
-    let lineContents = measures.map(() => {return <MeasureComp measureWidth={width / measures.length} measureHeight={100} />})
+    let lineContents = measures.map(() => {return <MeasureComp measureWidth={width / measures.length} measureHeight={60} />})
 
     return <StyledLine>{lineContents}</StyledLine>;
 };
