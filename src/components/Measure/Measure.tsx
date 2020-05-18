@@ -1,25 +1,38 @@
 import React from 'react';
 import { StyledMeasure, StyledMeasureLine } from '.';
+import { Measure as MeasureObj, Note } from '../../models';
+import { Beat } from '../Beat';
 
 export interface MeasureProps {
-    measureWidth: number;
-    measureHeight: number;
+    width: number;
+    height: number;
+    measure: MeasureObj;
     lineWeight?: number;
 }
 
-export function Measure({ measureWidth, measureHeight, lineWeight = 1 }: MeasureProps) {
-    let marginHeight: number = measureHeight / 4 - lineWeight;
+export function Measure({ width, height, measure, lineWeight = 1 }: MeasureProps) {
+    const lineSpacing: number = height / 4 - lineWeight;
+    const duration = measure.timeSignature.top / measure.timeSignature.bottom;
 
-    // beat should contain a span with height = measureHeight + measureMargin
-    // beat width = measureWidth / measure.timeSignature.length
-    // beat contains logic for calculating note x/y within it's span
-    // beat contains grouping/structure logic for note
+    // some notes can span multiple beats
 
     return (
-        <StyledMeasure height={measureHeight} width={measureWidth}>
-            <StyledMeasureLine weight={lineWeight} margin={marginHeight} />
-            <StyledMeasureLine weight={lineWeight} margin={marginHeight} />
-            <StyledMeasureLine weight={lineWeight} margin={marginHeight} />
-        </StyledMeasure>
+        <>
+            <StyledMeasure height={height} width={width}>
+                {
+                    // measures divide notes into beats
+                    // create an array from keys as map doesn't iterate over empty arrays
+                    Array.from(Array(measure.timeSignature.top).keys()).map((_, beat) => {
+                        let notes: Array<Note> | undefined = measure.notes?.filter(
+                            (note) => ( beat + 1 ) <= note.count && note.count < ( beat + 1 )  + duration,
+                        );
+                        return <Beat key={beat} notes={notes} height={height} width={width / duration} />;
+                    })
+                }
+                <StyledMeasureLine weight={lineWeight} margin={lineSpacing} />
+                <StyledMeasureLine weight={lineWeight} margin={lineSpacing} />
+                <StyledMeasureLine weight={lineWeight} margin={lineSpacing} />
+            </StyledMeasure>
+        </>
     );
 }
