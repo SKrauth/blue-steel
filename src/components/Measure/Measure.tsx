@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledMeasure, StyledMeasureLine } from '.';
+import { StyledMeasure, StyledMeasureLine } from '../css';
 import { Measure as MeasureObj, Note } from '../../models';
 import { Beat } from '../Beat';
 
@@ -21,7 +21,6 @@ export function Measure({ width, height, measure, lineWeight = 1 }: MeasureProps
             <StyledMeasure height={height} width={width}>
                 {
                     // measures divide notes into beats
-                    // create an array from keys as map doesn't iterate over empty arrays
                     Array.from(Array(measure.timeSignature.top).keys()).map((_, beat) => {
                         let notes: Array<Note> | undefined = measure.notes?.filter(
                             (note) => ( beat + 1 ) <= note.count && note.count < ( beat + 1 )  + duration,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledPage } from '.';
+import { StyledPage } from '../css';
 import { Line } from '../Line';
 import { Measure } from '../../models';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledNote } from '.'
+import { StyledNote } from '../css'
 
 export interface NoteProps {
   x: number;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledLine } from '.';
+import { StyledLine } from '../css';
 import { Measure as MeasureObj } from '../../models';
 import { Measure as MeasureComp } from '../Measure';
 

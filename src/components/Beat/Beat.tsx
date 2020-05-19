@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledBeat } from '.'
+import { StyledBeat } from '../css'
 import { Note } from '../../models';
 
 export interface BeatProps {
