@@ -1,12 +1,9 @@
 import React from 'react';
 import { StyledNote } from '../css'
 
-export interface NoteProps {
-  x: number;
-  y: number;
-}
 
-export function Note({}: NoteProps) {
+
+export function Note() {
   return <StyledNote />
 }
 // note is going to have multiple implementations that inherit from it
