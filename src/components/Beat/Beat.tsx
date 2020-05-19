@@ -10,8 +10,7 @@ export interface BeatProps {
 }
 
 export function Beat({ width, height, notes }: BeatProps) {
-    // beat should contain a span with height = measureHeight + measureMargin
-    // beat contains logic for calculating note x/y within it's span
+    // beat contains logic for calculating note x/y/fontSize within it's container, line spacing could be useful here
     // beat contains grouping/structure logic for note
 
     return (
@@ -20,7 +19,7 @@ export function Beat({ width, height, notes }: BeatProps) {
                 {notes?.map(() => {
                     return (
                         <OverlayChild x={10} y={20}>
-                            <NoteComp />
+                            <NoteComp fontSize={15} />
                         </OverlayChild>
                     );
                 })}
