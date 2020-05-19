@@ -14,7 +14,7 @@ export function Beat({width, height, notes}: BeatProps) {
 // beat contains logic for calculating note x/y within it's span
 // beat contains grouping/structure logic for note
 
-  return <StyledBeat>
+  return <StyledBeat height={height} width={width}>
     <>{console.log(width, height, notes)}</>
   </StyledBeat>
 }

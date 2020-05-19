@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyledMeasure, StyledMeasureLine } from '../css';
+import { StyledMeasure, StyledMeasureLine, OverlayParent, OverlayChild } from '../css';
 import { Measure as MeasureObj, Note } from '../../models';
 import { Beat } from '../Beat';
 
@@ -19,18 +19,24 @@ export function Measure({ width, height, measure, lineWeight = 1 }: MeasureProps
     return (
         <>
             <StyledMeasure height={height} width={width}>
-                {
-                    // measures divide notes into beats
-                    Array.from(Array(measure.timeSignature.top).keys()).map((_, beat) => {
-                        let notes: Array<Note> | undefined = measure.notes?.filter(
-                            (note) => ( beat + 1 ) <= note.count && note.count < ( beat + 1 )  + duration,
-                        );
-                        return <Beat key={beat} notes={notes} height={height} width={width / duration} />;
-                    })
-                }
-                <StyledMeasureLine weight={lineWeight} margin={lineSpacing} />
-                <StyledMeasureLine weight={lineWeight} margin={lineSpacing} />
-                <StyledMeasureLine weight={lineWeight} margin={lineSpacing} />
+                <OverlayParent>
+                    <OverlayChild>
+                        {
+                            // measures divide notes into beats
+                            Array.from(Array(measure.timeSignature.top).keys()).map((_, beat) => {
+                                let notes: Array<Note> | undefined = measure.notes?.filter(
+                                    (note) => beat + 1 <= note.count && note.count < beat + 1 + duration,
+                                );
+                                return <Beat key={beat} notes={notes} height={height} width={(width / measure.timeSignature.top)} />;
+                            })
+                        }
+                    </OverlayChild>
+                    <OverlayChild>
+                        <StyledMeasureLine weight={lineWeight} margin={lineSpacing} width={width} />
+                        <StyledMeasureLine weight={lineWeight} margin={lineSpacing} width={width} />
+                        <StyledMeasureLine weight={lineWeight} margin={lineSpacing} width={width} />
+                    </OverlayChild>
+                </OverlayParent>
             </StyledMeasure>
         </>
     );
