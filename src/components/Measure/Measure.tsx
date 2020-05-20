@@ -27,7 +27,7 @@ export function Measure({ width, height, measure, lineWeight = 1 }: MeasureProps
                                 let notes: Array<Note> | undefined = measure.notes?.filter(
                                     (note) => beat + 1 <= note.count && note.count < beat + 1 + duration,
                                 );
-                                return <Beat key={beat} notes={notes} height={height} width={(width / measure.timeSignature.top)} />;
+                                return <Beat key={beat} notes={notes} height={height} width={(width / measure.timeSignature.top)} noteSpacing={lineSpacing + lineWeight} />;
                             })
                         }
                     </OverlayChild>
